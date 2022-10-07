@@ -1,0 +1,12 @@
+import { SvgIcon, SvgIconProps } from "@mui/material"
+import React from "react"
+
+const TitleRightSeparator: React.FC<SvgIconProps> = (props) => {
+  return (
+    <SvgIcon width='386' height='17' viewBox="0 0 386 17" fill='none' {...props}>
+      <path d="M0.999878 10.817L7.43321 12.0147C13.8665 13.2125 26.7332 15.608 39.5999 16.8057C52.4665 18.0035 70.368 7.16583 83.2347 8.96246C96.1013 10.7591 105.611 17.3213 118.478 17.9202C131.345 18.5191 145.051 15.608 157.917 13.8114C170.784 12.0147 181.133 19.2012 194 16.8057C206.867 14.4102 219.733 10.817 232.6 7.22371C245.467 3.63045 258.333 0.037189 271.2 1.23494C284.067 2.4327 296.933 8.42146 309.8 11.4158C322.667 14.4102 335.533 14.4102 348.4 13.8114C361.267 13.2125 374.133 12.0147 380.567 11.4158L387 10.817" stroke="white" strokeLinecap="round"/>
+    </SvgIcon>
+  )
+}
+
+export default TitleRightSeparator
