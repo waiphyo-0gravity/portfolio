@@ -99,7 +99,7 @@ const PROJECTS = [
     title: 'MovieTV',
     topStack: (
       <Link href='https://github.com/waiphyo-0gravity/MovieTV' target='_blank' justifySelf='end'>
-        <GithubIcon />
+        <GithubIcon id="0"/>
       </Link>
     ),
     content: (
@@ -115,7 +115,7 @@ const PROJECTS = [
     title: 'Currency convector',
     topStack: (
       <Link href='https://github.com/waiphyo-0gravity/currency-converter' target='_blank' justifySelf='end'>
-        <GithubIcon />
+        <GithubIcon id="1"/>
       </Link>
     ),
     content: (
@@ -130,7 +130,7 @@ const PROJECTS = [
     title: 'Portfolio',
     topStack: (
       <Link href='https://github.com/waiphyo-0gravity/portfolio' target='_blank' justifySelf='end'>
-        <GithubIcon />
+        <GithubIcon id="2"/>
       </Link>
     ),
     content: (
