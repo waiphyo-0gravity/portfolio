@@ -1,5 +1,5 @@
 import { Box, BoxProps, styled } from "@mui/material"
-import React, { useEffect, useMemo, useRef } from "react"
+import React, { useEffect, useLayoutEffect, useMemo, useRef } from "react"
 import { primary } from "../../styles/colors"
 
 type VerticalTabsProps = {
@@ -46,7 +46,7 @@ const VerticalTabs: React.FC<VerticalTabsProps> = ({
     }
   }, [onChange])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const verticalTabs = containerEl.current?.querySelectorAll('.vertical-tab')
 
     if(!verticalTabs) return
