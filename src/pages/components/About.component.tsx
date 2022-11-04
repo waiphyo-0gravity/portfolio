@@ -1,4 +1,4 @@
-import { Box, Stack, styled } from "@mui/material"
+import { Box, Stack, styled, Theme, useMediaQuery, useTheme } from "@mui/material"
 import React, { useEffect, useMemo, useRef } from "react"
 import { useImmer } from "use-immer"
 import Link from "../../components/main/Link"
@@ -11,6 +11,7 @@ const About: React.FC = () => {
   const [transitionIn, setTransitionIn] = useImmer(false)
   const boxRef = useRef<any>()
   const isVisible = useIsInViewport(boxRef)
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
 
   useEffect(() => {
     if(!isVisible) return
@@ -20,38 +21,48 @@ const About: React.FC = () => {
 
   return (
     <StyledBox className={transitionIn ? 'is-visible' : ''}>
-      {/* Title */}
-      <ContentTitle ref={boxRef} title={'About me'} className={transitionIn ? 'is-visible' : ''}/>
+      {!isMobile && (
+        <img
+          className="profile-img"
+          src='/images/profile.png'
+          alt='Wai Phyo'
+          loading="lazy"/>
+      )}
 
-      {/* Content */}
-      <Stack ref={boxRef} direction='column' gap='16px' marginLeft='20px'>
-        <Typography className="briefing-label" variant="lg">
-          I’m currently a full-stack & iOS developer at <Link href='#' fontWeight={700}>One Terrace</Link>. 
-          And also a Software Developer with a Bachelor of Science focused in Computer Software Engineering from {<Link href='#' fontWeight={700}>UCSM</Link>}.
-        </Typography>
-        <Typography className="technologies-label">
-          Here are some technologies I have been working with:
-        </Typography>
+      <Box className="right-content">
+        {/* Title */}
+        <ContentTitle ref={boxRef} title={'About me'} className={transitionIn ? 'is-visible' : ''}/>
 
-        {/* Technologies list */}
-        <Box className="technologies-container">
-          <Stack component='ul' className="list-container">
-            <ListItem>Javascript</ListItem>
-            <ListItem>React.js</ListItem>
-            <ListItem>HTML & CSS</ListItem>
-          </Stack>
-          <Stack component='ul' className="list-container">
-            <ListItem>Swift</ListItem>
-            <ListItem>Node.js</ListItem>
-            <ListItem>Laravel</ListItem>
-          </Stack>
-        </Box>
+        {/* Content */}
+        <Stack ref={boxRef} direction='column' gap='16px' marginLeft='20px'>
+          <Typography className="briefing-label" variant="lg">
+            I’m currently a full-stack & iOS developer at <Link href='#' fontWeight={700}>One Terrace</Link>. 
+            And also a Software Developer with a Bachelor of Science focused in Computer Software Engineering from {<Link href='#' fontWeight={700}>UCSM</Link>}.
+          </Typography>
+          <Typography className="technologies-label">
+            Here are some technologies I have been working with:
+          </Typography>
 
-        {/* Out of work */}
-        <Typography className="out-of-work-label" variant='lg' marginTop='8px'>
-          Outside of work, I'm interested in following the developments of science. I also play a lot of video games.
-        </Typography>
-      </Stack>
+          {/* Technologies list */}
+          <Box className="technologies-container">
+            <Stack component='ul' className="list-container">
+              <ListItem>Javascript</ListItem>
+              <ListItem>React.js</ListItem>
+              <ListItem>HTML & CSS</ListItem>
+            </Stack>
+            <Stack component='ul' className="list-container">
+              <ListItem>Swift</ListItem>
+              <ListItem>Node.js</ListItem>
+              <ListItem>Laravel</ListItem>
+            </Stack>
+          </Box>
+
+          {/* Out of work */}
+          <Typography className="out-of-work-label" variant='lg' marginTop='8px'>
+            Outside of work, I'm interested in following the developments of science. I also play a lot of video games.
+          </Typography>
+        </Stack>
+      </Box>
     </StyledBox>
   )
 }
@@ -59,16 +70,30 @@ const About: React.FC = () => {
 export default About
 
 const StyledBox = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: '24px',
-  justifyContent: 'center',
+  display: 'grid',
+  gridTemplateColumns: 'max-content 1fr',
+  alignItems: 'center',
   minHeight: '100vh',
   height: 'max-content',
   padding: '52px 0',
   marginLeft: '15%',
   paddingLeft: '72px',
-  maxWidth: 'calc(506px + 72px)',
+  // maxWidth: 'calc(506px + 72px)',
+  gap: '24px',
+
+  '& .profile-img': {
+    width: '320px',
+    transform: 'scale(0.8)',
+    opacity: 0,
+    borderRadius: '20px'
+  },
+
+  '& .right-content': {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '24px',
+    maxWidth: '506px'
+  },
 
   '& *': {
     transition: '1s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -94,6 +119,12 @@ const StyledBox = styled(Box)(({ theme }) => ({
 
   // Visible animations
   '&.is-visible': {
+    '& .profile-img': {
+      borderRadius: '108px',
+      transform: 'none',
+      opacity: 1
+    },
+
     '& .briefing-label': {
       transitionDelay: '.2s',
       opacity: 1,
@@ -122,5 +153,6 @@ const StyledBox = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     marginLeft: '0',
     marginRight: '20px',
+    gridTemplateColumns: '1fr'
   }
 }))

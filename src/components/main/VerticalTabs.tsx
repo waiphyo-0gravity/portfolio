@@ -78,7 +78,6 @@ const StyledBox = styled(Box)(({ theme }) => ({
   display: 'grid',
   padding: '8px 16px',
   position: 'relative',
-  overflowX: 'auto',
   gridTemplateColumns: 'max-content',
   scrollBehavior: 'smooth',
 
@@ -101,6 +100,8 @@ const StyledBox = styled(Box)(({ theme }) => ({
   },
 
   [theme.breakpoints.down('md')]: {
+    overflowX: 'auto',
+
     '& .tabs-container': {
       display: 'inline-flex',
       direction: 'rtl'
