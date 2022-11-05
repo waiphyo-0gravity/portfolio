@@ -24,7 +24,7 @@ const About: React.FC = () => {
       {!isMobile && (
         <img
           className="profile-img"
-          src='/images/profile.png'/>
+          src='/images/profile.jpg'/>
       )}
 
       <Box className="right-content">
