@@ -24,9 +24,7 @@ const About: React.FC = () => {
       {!isMobile && (
         <img
           className="profile-img"
-          src='/images/profile.png'
-          alt='Wai Phyo'
-          loading="lazy"/>
+          src='/images/profile.png'/>
       )}
 
       <Box className="right-content">
