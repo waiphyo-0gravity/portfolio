@@ -56,9 +56,9 @@ const StyledBox = styled(Box)(({ theme }) => ({
   justifyContent: 'start',
   minHeight: '100vh',
   height: 'max-content',
-  padding: '52px 0 98px 0',
+  padding: '52px 24px 98px 72px',
   marginLeft: '15%',
-  paddingLeft: '72px',
+  // paddingLeft: '72px',
   maxWidth: 'calc(800px + 72px)',
 
   '& .project-grid': {

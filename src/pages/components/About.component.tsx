@@ -73,9 +73,9 @@ const StyledBox = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   minHeight: '100vh',
   height: 'max-content',
-  padding: '52px 0',
+  padding: '52px 24px 52px 72px',
   marginLeft: '15%',
-  paddingLeft: '72px',
+  // paddingLeft: '72px',
   // maxWidth: 'calc(506px + 72px)',
   gap: '24px',
 

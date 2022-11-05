@@ -45,7 +45,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
     opacity: 0,
     transform: 'translateX(25px)',
     fill: 'none',
-    width: 'auto',
+    width: '100%',
     height: 'auto',
     overflow: 'visible',
     alignSelf: 'center' 
@@ -55,12 +55,6 @@ const StyledBox = styled(Box)(({ theme }) => ({
     '& .left-separator, .right-separator, .title-label': {
       opacity: 1,
       transform: 'none'
-    }
-  },
-
-  [theme.breakpoints.down('md')]: {
-    '& .right-separator': {
-      width: '100%'
     }
   }
 }))

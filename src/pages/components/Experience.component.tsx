@@ -122,9 +122,9 @@ const StyledBox = styled(Box)<{ is_first_tab_active: number, is_last_tab_active:
   justifyContent: 'start',
   minHeight: '100vh',
   height: 'max-content',
-  padding: '52px 0',
+  padding: '52px 24px 52px 72px',
   marginLeft: '15%',
-  paddingLeft: '72px',
+  // paddingLeft: '72px',
   maxWidth: 'calc(700px + 72px)',
 
   '& .content-body': {
