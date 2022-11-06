@@ -69,7 +69,7 @@ const StyledBox = styled(Box)({
   gridTemplateColumns: 'max-content 1fr',
   gap: '20px',
   alignItems: 'center',
-  height: '100vh',
+  height: '100%',
   overflow: 'hidden',
 
   '& .content': {

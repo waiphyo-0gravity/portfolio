@@ -59,7 +59,8 @@ const Home: React.FC = () => {
               alignSelf='start'
               marginTop='24px'
               className="send-mail-btn"
-              onClick={handleSendMail}>
+              onClick={handleSendMail}
+              fontWeight='700!important'>
                 <MailIcon />
                 Say hi!
             </Button>
