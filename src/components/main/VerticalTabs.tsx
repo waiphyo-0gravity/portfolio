@@ -16,6 +16,7 @@ const VerticalTabs: React.FC<VerticalTabsProps> = ({
 
   const selectedTabPoints = useMemo(() => {
     const verticalTab = containerEl.current?.querySelectorAll('.vertical-tab')?.[tab]
+    verticalTab?.getBoundingClientRect()
     const width = ((verticalTab?.clientWidth ?? 0) + 32) + 'px'
     // @ts-ignore
     const offsetLeft = ((verticalTab?.offsetLeft ?? 0) - 16) + 'px'
