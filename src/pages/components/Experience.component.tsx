@@ -238,7 +238,7 @@ const Experiences: {[key: string]: ExperienceType} = {
     descriptions: [
       'Crafted a Housing Service React app from scratch for both client and server side.',
       <>
-        Collaborate with team members to deliever an &nbsp;
+        Collaborate with team members to deliver an &nbsp;
         <Link href='https://online.businessjapanese.jp/login' target='_blank'>Online Learning System</Link>
         , both on client and server side</>
     ]
@@ -254,7 +254,7 @@ const Experiences: {[key: string]: ExperienceType} = {
       'Discussed with QA team to get more suitable, reliable and testable architecture design pattern.',
       'Implemented complex UIs and animations for rich experience.',
       <>
-        Performed as key player to deliever&nbsp;
+        Performed as key player to deliver&nbsp;
         <Link href='https://apps.apple.com/us/app/nodma-reader/id1515688650' target='_blank'>NODMA Reader</Link>,&nbsp;
         <Link href='https://apps.apple.com/mu/app/classwerkz/id1439046073' target='_blank'>ClassWerkz</Link> &nbsp;
         and&nbsp; <Link href='https://apps.apple.com/us/app/stemwerkz/id1545876287' target='_blank'>STEMWerkz</Link>
@@ -266,7 +266,7 @@ const Experiences: {[key: string]: ExperienceType} = {
     duration: 'MAY 2017 - JUL 2017',
     link: 'https://www.amdon.com/',
     descriptions: [
-      'Delievered an ASP.NET web app that manage staffs\' information.'
+      'Delivered an ASP.NET web app that manage staffs\' information.'
     ]
   }
 }
