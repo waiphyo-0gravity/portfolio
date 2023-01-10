@@ -6,11 +6,31 @@ import { useImmer } from "use-immer"
 import { useIsInViewport } from "../../lib/useIsInViewport"
 import MailIcon from "../../components/icons/Mail.icon"
 import Button from "../../components/main/Button"
+import { colors } from "../../styles/colors"
 
 const Home: React.FC = () => {
   const [transitionIn, setTransitionIn] = useImmer(false)
   const containerRef = useRef<any>()
   const isVisible = useIsInViewport(containerRef)
+
+  useEffect(() => {
+    const words = document.getElementsByClassName('name-word')
+    const nameLabel = document.getElementsByClassName('name-label')
+
+    for(let i = 0; i < words.length; i++) {
+      const nameWord = words[i]
+
+      nameWord.addEventListener('mouseover', _ => {
+        handleMouseOverNameWord(i, words)
+      })
+    }
+
+    nameLabel[0].addEventListener('mouseleave', () => {
+      for(let i = 0; i < words.length; i++) {
+        words[i].classList.remove('active-main', 'active-adjacent-1')
+      }
+    })
+  }, [])
 
   useEffect(() => {
     if(!isVisible) return
@@ -20,6 +40,20 @@ const Home: React.FC = () => {
 
   const handleSendMail = () => {
     window.open('mailto:waiphyo.995@gmail.com', '_blank')
+  }
+
+  const handleMouseOverNameWord = (currentIndex: number, words: HTMLCollectionOf<Element>) => {
+    for(let i = 0; i < words.length; i++) {
+      words[i].classList.remove('active-main', 'active-adjacent-1')
+
+      if(i !== currentIndex) {
+        if((currentIndex - 1 === i || currentIndex + 1 === i) && currentIndex !== i) {
+          words[i].classList.add('active-adjacent-1')
+        }
+      } else {
+        words[i].classList.add('active-main')
+      }
+    }
   }
 
   return (
@@ -43,14 +77,14 @@ const Home: React.FC = () => {
               className="name-label"
               color='primary'
               fontWeight={700}>
-                <span>W</span>
-                <span>a</span>
-                <span>i</span>
+                <span className="name-word">W</span>
+                <span className="name-word">a</span>
+                <span className="name-word">i</span>
                 &nbsp;
-                <span>P</span>
-                <span>h</span>
-                <span>y</span>
-                <span>o</span>
+                <span className="name-word">P</span>
+                <span className="name-word">h</span>
+                <span className="name-word">y</span>
+                <span className="name-word">o</span>
             </Typography>
             <Typography className="pasion-label" variant="3xl" color='gray-100' fontWeight={700}>I love complex things.</Typography>
             <Typography className="info-label" variant="lg" color='gray-400' marginTop='8px'>I’m a Software Developer from Myanmar. And have great interest in iOS and full-stack development </Typography>
@@ -100,12 +134,24 @@ const StyledBox = styled(Box)(({ theme }) => ({
     flexDirection: 'row',
     fontSize: '66px',
     lineHeight: '76px',
+    alignSelf: 'start',
+    cursor: 'pointer',
 
     '& *': {
-      transition: '0.3s cubic-bezier(0.4, 0, 0.2, 1)',
       opacity: 0,
       transform: 'translateX(-45px) scale(0) rotate(-10deg)'
     },
+  },
+
+  '& .name-word': {
+    '&.active-main': {
+      fontSize: '77px',
+      color: colors.secondary
+    },
+
+    '&.active-adjacent-1': {
+      color: '#F9BC9B',
+    }
   },
 
   '& .send-mail-btn': {
@@ -158,37 +204,44 @@ const StyledBox = styled(Box)(({ theme }) => ({
 
     '& .name-label': {
       '& :nth-of-type(1)': {
-        transitionDelay: '.3s',
+        transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) .3s, font-size 0.2s ease-in-out, color 0.2s ease-in-out 0s',
+        // transitionDelay: '.3s',
         opacity: 1,
         transform: 'none'
       },
       '& :nth-of-type(2)': {
-        transitionDelay: '.34s',
+        transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) .34s, font-size 0.2s ease-in-out, color 0.2s ease-in-out 0s',
+        // transitionDelay: '.34s',
         opacity: 1,
         transform: 'none'
       },
       '& :nth-of-type(3)': {
-        transitionDelay: '.38s',
+        transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) .38s, font-size 0.2s ease-in-out, color 0.2s ease-in-out 0s',
+        // transitionDelay: '.38s',
         opacity: 1,
         transform: 'none'
       },
       '& :nth-of-type(4)': {
-        transitionDelay: '.42s',
+        transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) .42s, font-size 0.2s ease-in-out, color 0.2s ease-in-out 0s',
+        // transitionDelay: '.42s',
         opacity: 1,
         transform: 'none'
       },
       '& :nth-of-type(5)': {
-        transitionDelay: '.46s',
+        transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) .46s, font-size 0.2s ease-in-out, color 0.2s ease-in-out 0s',
+        // transitionDelay: '.46s',
         opacity: 1,
         transform: 'none'
       },
       '& :nth-of-type(6)': {
-        transitionDelay: '.50s',
+        transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) .50s, font-size 0.2s ease-in-out, color 0.2s ease-in-out 0s',
+        // transitionDelay: '.50s',
         opacity: 1,
         transform: 'none'
       },
       '& :nth-of-type(7)': {
-        transitionDelay: '.54s',
+        transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1) .54s, font-size 0.2s ease-in-out, color 0.2s ease-in-out 0s',
+        // transitionDelay: '.54s',
         opacity: 1,
         transform: 'none'
       },
