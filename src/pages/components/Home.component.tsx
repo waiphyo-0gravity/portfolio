@@ -150,6 +150,7 @@ const StyledBox = styled(Box)(({ theme }) => ({
     },
 
     '&.active-adjacent-1': {
+      fontSize: '71px',
       color: '#F9BC9B',
     }
   },

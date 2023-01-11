@@ -2,14 +2,15 @@ import { Link as MUILink, LinkProps as MUILinkProps,styled } from '@mui/material
 import { secondary } from '../../styles/colors'
 
 type LinkPropsProps = {
-
+  linkDecorationColor?: string
 } & MUILinkProps
 const Link: React.FC<LinkPropsProps> = ({
+  linkDecorationColor,
   children,
   ...props
 }) => {
   return (
-    <StyledLink { ...props }>
+    <StyledLink link_color={linkDecorationColor} { ...props }>
       {children}
     </StyledLink>
   )
@@ -17,7 +18,9 @@ const Link: React.FC<LinkPropsProps> = ({
 
 export default Link
 
-const StyledLink = styled(MUILink)({
+const StyledLink = styled(MUILink)<{ link_color?: string }>(({
+  link_color
+}) =>({
   textDecoration: 'none',
   position: 'relative',
 
@@ -29,7 +32,7 @@ const StyledLink = styled(MUILink)({
     bottom: 0,
     left: 0,
     zIndex: 0,
-    background: secondary,
+    background: link_color ?? secondary,
     transform: 'scaleX(0)',
     transformOrigin: '100% 100%',
     transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -49,4 +52,4 @@ const StyledLink = styled(MUILink)({
       transform: 'scaleX(1)'
     }
   }
-})
+}))
