@@ -1,5 +1,5 @@
 import { Box, IconButton, Stack, styled, svgIconClasses, useMediaQuery, useTheme } from "@mui/material"
-import React, { useEffect } from "react"
+import React, { useEffect, useRef } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useImmer } from "use-immer"
 import { Dispatch, RootState } from "../../store"
@@ -12,7 +12,8 @@ import SocialMediaProfileIcon from "../icons/SocialMediaProfile.icon"
 import Link from "../main/Link"
 import Typography from "../main/Typography"
 import astronautAnimationData from '../../lotties/astronaut-with-space-shuttle.json'
-import Lottie,  { Options } from 'react-lottie'
+import socialMediaAnimationData from '../../lotties/social-media.json'
+import Lottie, { Options } from 'react-lottie'
 
 const SocialMediasPanel: React.FC = () => {
   const scrollHelper = useSelector((state: RootState) => state.scrollHelper)
@@ -21,10 +22,19 @@ const SocialMediasPanel: React.FC = () => {
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('md'))
 
-  const lottieOptions: Options = {
+  const astronautLottieOptions: Options = {
     loop: true,
     autoplay: true,
     animationData: astronautAnimationData,
+    rendererSettings: {
+      preserveAspectRatio: 'xMidYMid slice'
+    }
+  }
+
+  const socialMediaLottieOptions: Options = {
+    loop: false,
+    autoplay: false,
+    animationData: socialMediaAnimationData,
     rendererSettings: {
       preserveAspectRatio: 'xMidYMid slice'
     }
@@ -46,17 +56,17 @@ const SocialMediasPanel: React.FC = () => {
         </IconButton>
 
         <Box className="social-medias-container">
-          <Lottie
-            options={lottieOptions}
-            width={200}
-            height={200}
-            style={{
-              position: 'absolute',
-              left: isMobile ? 'calc(120px + 100px)' : 'calc(50% - 50px)',
-              bottom: 0
-            }}/>
-
           <Box className="social-medias">
+            <Lottie
+              isStopped={!scrollHelper.activeSocialMedias}
+              options={socialMediaLottieOptions}
+              width={300}
+              height={40}
+              style={{
+                margin: '0 0 16px 0',
+                transform: 'translateX(-35%)'
+              }}/>
+
             <Link
               className="social-media-link"
               href="mailto:waiphyo.995@gmail.com"
@@ -68,28 +78,38 @@ const SocialMediasPanel: React.FC = () => {
                 </Typography>
             </Link>
 
-              <Link
-                className="social-media-link"
-                href="https://www.linkedin.com/in/waiphyo995/"
-                target='_blank'
-                linkDecorationColor='#0077b5'>
-                  <LinkedInIcon />
-                  <Typography variant="xl" color='white'>
-                    LinkedIn
-                  </Typography>
-              </Link>
-              
-              <Link
-                className="social-media-link"
-                href="https://github.com/waiphyo-0gravity"
-                target='_blank'
-                linkDecorationColor='#333'>
-                  <GithubIcon sx={{ fontSize: "20px" }}/>
-                  <Typography variant="xl" color='white'>
-                    Github
-                  </Typography>
-              </Link>
-            </Box>
+            <Link
+              className="social-media-link"
+              href="https://www.linkedin.com/in/waiphyo995/"
+              target='_blank'
+              linkDecorationColor='#0077b5'>
+                <LinkedInIcon />
+                <Typography variant="xl" color='white'>
+                  LinkedIn
+                </Typography>
+            </Link>
+            
+            <Link
+              className="social-media-link"
+              href="https://github.com/waiphyo-0gravity"
+              target='_blank'
+              linkDecorationColor='#333'>
+                <GithubIcon sx={{ fontSize: "20px" }}/>
+                <Typography variant="xl" color='white'>
+                  Github
+                </Typography>
+            </Link>
+          </Box>
+
+          <Lottie
+            options={astronautLottieOptions}
+            width={200}
+            height={200}
+            style={{
+              position: 'absolute',
+              left: isMobile ? 'calc(120px + 100px)' : 'calc(50% - 50px)',
+              bottom: 0
+            }}/>
         </Box>
     </StyledBox>
   )
@@ -141,10 +161,10 @@ const StyledBox = styled(Box)<{ is_active: number }>(({
 
   '& .social-medias-container': {
     display: 'flex',
+    flexDirection: 'column',
     position: 'absolute',
     top: '-240px',
     left: '-120px',
-    flexDirection: 'row',
     gap: '8px',
     width: is_active ? 'calc(100vh + 240px - 24px)' : '40px',
     height: is_active ? 'calc(100vh + 240px - 24px)' : '40px',
@@ -179,7 +199,7 @@ const StyledBox = styled(Box)<{ is_active: number }>(({
     display: 'flex',
     flexDirection: 'column',
     marginLeft: '50%',
-    marginTop: 'calc((50% / 3) + 240px)',
+    marginTop: 'calc((50% / 5) + 240px)',
     alignItems: 'start',
     gap: '16px'
   },
